@@ -1,0 +1,11 @@
+{
+  "name": "namaste-dev",
+  "version": "1.0.0",
+  "description": "Saurabh Chauhan",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC"
+}
