@@ -19,8 +19,16 @@ html {
   background-color: white;
 }
 
+.food-xpress {
+  margin-top: -1.3rem;
+  margin-bottom: 0;
+  color: #be123c;
+  font-weight: 500;
+}
+
 .logo {
-  width: 100px;
+  padding-left: 0.5rem;
+  width: 75px;
 }
 
 .nav-items > ul {
@@ -49,10 +57,7 @@ html {
 
 .res-card {
   width: 250px;
-  height: 350px;
-  border-radius: 0.5rem;
-  background-color: white;
-  box-shadow: 4px 4px 5px #f0f0f0;
+  height: max-content;
   margin-bottom: 1rem;
   overflow: scroll;
 }
@@ -68,31 +73,34 @@ html {
 
 .res-logo {
   width: 100%;
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
+  height: 180px;
+  border-radius: 0.5rem;
 }
 
 .res-card-details {
   display: flex;
   flex-direction: column;
-  padding-left: 1rem;
+  padding-top: 0;
 }
 
 .eta-rating-container {
   display: flex;
+  justify-content: space-between;
+  margin-top: -1rem;
 }
 
 .rating {
   color: green;
   display: flex;
-  margin-right: 1rem;
   align-items: center;
+  margin: 0;
 }
 
 .star-rating-logo {
+  margin: 0;
   width: 1.2rem;
   height: 1.2rem;
-  padding-right: 0.3rem;
+  padding-right: 0.2rem;
 }
 
 .res-heading {
@@ -100,6 +108,7 @@ html {
 }
 
 .cuisines {
+  margin: 0;
   font-weight: 100;
-  padding-right: 1rem;
+  margin-top: -1rem;
 }

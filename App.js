@@ -30,6 +30,7 @@ const restaurants = [
     info: {
       id: '554643',
       name: 'Third Wave Coffee',
+      url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDpk2v4y846pWOhUF7YBaAWEQyCQhsQRZq-gacyDNx0Q&s',
       cloudinaryImageId: 'd96267738c19ec62acb5390e52faba41',
       locality: 'Connaught Place',
       areaName: 'Connaught Place',
@@ -116,6 +117,7 @@ const restaurants = [
     info: {
       id: '330141',
       name: 'Love Poori Wala',
+      url: 'https://media.istockphoto.com/id/928823336/photo/grilled-chicken-breast-fried-chicken-fillet-and-fresh-vegetable-salad-of-tomatoes-cucumbers.jpg?s=612x612&w=0&k=20&c=x6KbcglhT_oxKEzCoSM5E8abP3rlEZAt7jQhlAPZtoY=',
       cloudinaryImageId: 'ccspmmtwsj5gmeoxsicn',
       locality: 'Lala Jagan Nath Marg',
       areaName: 'Kamla Nagar',
@@ -200,6 +202,7 @@ const restaurants = [
     info: {
       id: '675567',
       name: 'Juggernaut',
+      url: 'https://www.fastfoodmenuprices.com/wp-content/uploads/2018/06/Popeyes-Delivery.jpg',
       cloudinaryImageId: '1561318fb636d378666d71f4ef534272',
       locality: 'Barakhamba Road',
       areaName: 'Connaught Place',
@@ -272,6 +275,7 @@ const restaurants = [
     info: {
       id: '44972',
       name: 'Om di Hatti(Kamla Nagar)',
+      url: 'https://www.forbesindia.com/media/images/2021/Dec/img_175063_whyisbiryanigettingbrandedalloverthecountry.jpg',
       cloudinaryImageId: 'ypoamjz9lkaxlsf6075j',
       locality: 'Shakti Nagar',
       areaName: 'Kamla Nagar',
@@ -353,6 +357,7 @@ const restaurants = [
     info: {
       id: '98352',
       name: 'Nagpal Di Hatti',
+      url: 'https://icebergdriveinn.com/cdn/shop/articles/Fast-Food-How-It-Has-Evolved-in-the-Past-Decades.jpg?v=1625683335',
       cloudinaryImageId: 'tbprrdfgtamn6tnexyxp',
       locality: 'Geeta Colony',
       areaName: 'Geeta Colony',
@@ -420,6 +425,7 @@ const restaurants = [
     info: {
       id: '45622',
       name: 'Gopal Sweets Corner (Kamla Nagar)',
+      url: 'https://cdn0.weddingwire.in/article/1955/3_2/1280/jpg/65591-indian-sweets-binjal-pandya-lead-image.webp',
       cloudinaryImageId: 'ms0fyojyvisrduycbnby',
       locality: 'Kamla Nagar',
       areaName: 'GTB Nagar',
@@ -487,6 +493,7 @@ const restaurants = [
     info: {
       id: '107452',
       name: 'Chaayos Chai+Snacks=Relax',
+      url: 'https://madaboutkitchen.in/wp-content/uploads/2020/06/Nipattu-3-.jpg',
       cloudinaryImageId:
         'RX_THUMBNAIL/IMAGES/VENDOR/2024/4/9/1dbdf671-cbed-4fc1-8b43-faa0165112e9_107452.JPG',
       locality: 'Kashmiri Gate',
@@ -611,6 +618,7 @@ const restaurants = [
     info: {
       id: '253727',
       name: "McDonald's",
+      url: 'https://img.freepik.com/free-photo/grilled-beef-burger-with-fries-cheese-tomato-generative-ai_188544-8466.jpg',
       cloudinaryImageId: '535fc9f9c135f7982317bbb6a64a1ffc',
       locality: 'Kashmere Gate Metro Station',
       areaName: 'Kashmiri Gate',
@@ -694,6 +702,7 @@ const restaurants = [
     info: {
       id: '526516',
       name: 'Salad Days',
+      url: 'https://www.eatingwell.com/thmb/sIf2Z1oNy9UjunVXOCBG5tHAav4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/4518422-8b9bac307f7a4d7fb4379b8c647b806d.jpg',
       cloudinaryImageId: 'cfa1123ebf17413dc7d0a80c7361fab3',
       locality: 'Gole Market',
       areaName: 'Gole Market',
@@ -798,15 +807,13 @@ const RestaurantCard = ({ info }) => {
     name,
     cuisines,
     avgRating,
+    costForTwo,
+    url,
     sla: { deliveryTime },
   } = info;
   return (
     <div className="res-card">
-      <img
-        className="res-logo"
-        src="https://www.shutterstock.com/image-photo/dum-handi-chicken-biryani-prepared-600nw-2000023562.jpg"
-        alt="restaurant logo"
-      />
+      <img className="res-logo" src={url} alt="restaurant logo" />
       <div className="res-card-details">
         <h3 className="res-heading">{name}</h3>
         <div>
@@ -820,6 +827,7 @@ const RestaurantCard = ({ info }) => {
               <p>{avgRating}</p>
             </div>
             <p>ETA {deliveryTime} min</p>
+            <p>{costForTwo}</p>
           </div>
         </div>
         <p className="cuisines">{cuisines.join(', ')}</p>
@@ -831,10 +839,9 @@ const RestaurantCard = ({ info }) => {
 const Body = () => {
   return (
     <div className="body">
-      <div className="search">Search</div>
       <div className="res-container">
-        {restaurants.map((restaurant, i) => (
-          <RestaurantCard key={i} info={restaurant.info} />
+        {restaurants.map((restaurant) => (
+          <RestaurantCard key={restaurant.info.id} info={restaurant.info} />
         ))}
       </div>
     </div>
@@ -847,9 +854,10 @@ const Header = () => {
       <div className="logo-container">
         <img
           className="logo"
-          src="https://play-lh.googleusercontent.com/iuX5IA2NJDSLT8CKaEoNPdi2u4JOM5wRE-3QS_Nc2uUHkfg6Y1OzVd9XTXvExQzgeeId"
+          src="https://png.pngtree.com/png-clipart/20230815/original/pngtree-hot-food-logo-images-grill-stamp-bbq-vector-picture-image_10812270.png"
           alt="logo"
         />
+        <p className="food-xpress">FoodXpress</p>
       </div>
       <div className="nav-items">
         <ul>
