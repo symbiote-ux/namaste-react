@@ -1,17 +1,34 @@
+import { SWIGGY_IMG_URL } from '../utils/constants';
 export const RestaurantCard = ({ info }) => {
   const {
     name,
     cuisines,
     avgRating,
     costForTwo,
-    url,
+    cloudinaryImageId,
+    aggregatedDiscountInfoV3: { header, subHeader } = {},
+    locality,
+    totalRatingsString,
     sla: { deliveryTime },
   } = info;
   return (
     <div className="res-card">
-      <img className="res-logo" src={url} alt="restaurant logo" />
+      <img
+        className="res-logo"
+        src={SWIGGY_IMG_URL + cloudinaryImageId}
+        alt="restaurant logo"
+      />
       <div className="res-card-details">
-        <h3 className="res-heading">{name}</h3>
+        <h3 className="res-heading">
+          {name}
+          {header && subHeader && (
+            <span className="offer">{header + ' ' + subHeader}</span>
+          )}
+        </h3>
+        <p className="locality">
+          {locality}{' '}
+          <span className="rating-count">{totalRatingsString} Ratings</span>
+        </p>
         <div>
           <div className="eta-rating-container">
             <div className="rating">

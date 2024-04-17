@@ -115,4 +115,38 @@ html {
 
 .filter-btn {
   cursor: pointer;
+  color: #be123c;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.filter-btn:hover {
+  transform: scale(1.03);
+}
+
+.filter {
+  display: flex;
+  justify-content: end;
+  padding: 1rem;
+  padding-bottom: 0;
+}
+
+.locality {
+  font-size: small;
+  font-weight: 200;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.offer {
+  color: #f43f5e;
+  margin-left: 0.5rem;
+  font-size: smaller;
+  font-weight: 500;
+}
+
+.rating-count {
+  color: green;
 }
