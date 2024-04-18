@@ -17,12 +17,13 @@ export const Body = () => {
     setFilter(true);
   };
 
-  const filterRestaurant = (condition) => {
+  const filterTopRestaurant = () => {
     const filteredList = listOfRestaurants.filter(
       ({ info }) => info.avgRating > 4.4
     );
     setFilteredRestaurants(filteredList);
     setFilter((prev) => !prev);
+    filter && setFilteredRestaurants(listOfRestaurants);
   };
 
   const fetchData = async () => {
@@ -45,6 +46,7 @@ export const Body = () => {
       },
     } = json;
     setListOfRestaurants(restaurants);
+    setFilteredRestaurants(restaurants);
   };
 
   useEffect(() => {
@@ -66,18 +68,14 @@ export const Body = () => {
             Search
           </button>
         </div>
-        <button className="filter-btn" onClick={() => filterRestaurant()}>
+        <button className="filter-btn" onClick={() => filterTopRestaurant()}>
           {filter ? 'Show All' : '*Show Top Rated*'}
         </button>
       </div>
       <div className="res-container">
-        {filter
-          ? filteredRestaurants.map(({ info }) => (
-              <RestaurantCard key={info.id} info={info} />
-            ))
-          : listOfRestaurants.map(({ info }) => (
-              <RestaurantCard key={info.id} info={info} />
-            ))}
+        {filteredRestaurants.map(({ info }) => (
+          <RestaurantCard key={info.id} info={info} />
+        ))}
       </div>
     </div>
   ) : (
