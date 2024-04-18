@@ -14,7 +14,7 @@ export const Body = () => {
       return info.name.toLowerCase().includes(searchText.toLowerCase());
     });
     setFilteredRestaurants(filteredList);
-    setFilter((prev) => !prev);
+    setFilter(true);
   };
 
   const filterRestaurant = (condition) => {
