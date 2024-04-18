@@ -1,5 +1,6 @@
 import { RestaurantCard } from './RestaurantCard';
 import { useState, useEffect } from 'react';
+import { Shimmer } from './Shimmer';
 import { SWIGGY_API_URL } from '../utils/constants';
 
 export const Body = () => {
@@ -41,7 +42,8 @@ export const Body = () => {
     fetchData();
   }, []);
 
-  return (
+  //Conditional rendering
+  return listOfRestaurants.length !== 0 ? (
     <div className="body">
       <div className="filter">
         <button className="filter-btn" onClick={() => filterRestaurant()}>
@@ -58,5 +60,7 @@ export const Body = () => {
             ))}
       </div>
     </div>
+  ) : (
+    <Shimmer />
   );
 };
