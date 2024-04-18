@@ -10,7 +10,7 @@ export const Body = () => {
 
   const filterRestaurant = () => {
     const filteredList = listOfRestaurants.filter(
-      ({ info }) => info.avgRating > 4.2
+      ({ info }) => info.avgRating > 4.4
     );
     setFilteredRestaurants(filteredList);
     setFilter((prev) => !prev);
@@ -46,6 +46,9 @@ export const Body = () => {
   return listOfRestaurants.length !== 0 ? (
     <div className="body">
       <div className="filter">
+        <div className="search">
+          <input type="text" placeholder="Search by name or cusines..." />
+        </div>
         <button className="filter-btn" onClick={() => filterRestaurant()}>
           {filter ? 'Show All' : '*Show Top Rated*'}
         </button>

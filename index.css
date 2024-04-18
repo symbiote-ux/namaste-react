@@ -16,6 +16,7 @@ html {
   justify-content: space-between;
   padding-left: 2rem;
   padding-right: 2rem;
+  margin-bottom: 0.5rem;
   background-color: white;
 }
 
@@ -67,10 +68,6 @@ html {
   transform: scale(1.03);
 }
 
-.search {
-  padding: 10px;
-}
-
 .res-logo {
   width: 100%;
   height: 180px;
@@ -113,24 +110,38 @@ html {
   margin-top: -1rem;
 }
 
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0.5rem;
+  padding-bottom: 0;
+}
+
+.search {
+  display: flex;
+}
+
+.search input {
+  width: 300px;
+  border: 2px solid #ccc;
+  border-radius: 0.5rem;
+  outline: none;
+  font-size: large;
+  color: #aaa;
+  padding: 0.5rem;
+}
+
 .filter-btn {
   cursor: pointer;
   color: #be123c;
   border: none;
   background-color: white;
-  padding: 0.5rem;
   border-radius: 0.5rem;
 }
 
 .filter-btn:hover {
   transform: scale(1.03);
-}
-
-.filter {
-  display: flex;
-  justify-content: end;
-  padding: 1rem;
-  padding-bottom: 0;
 }
 
 .locality {
@@ -164,4 +175,20 @@ html {
   width: 250px;
   height: 300px;
   background-color: white;
+}
+
+.login-btn {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font-size: x-large;
+  padding-top: 0.5rem;
+}
+
+.login {
+  color: green;
+}
+
+.logout {
+  color: #be123c;
 }
