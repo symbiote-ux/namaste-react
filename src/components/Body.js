@@ -7,8 +7,17 @@ export const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [filter, setFilter] = useState(false);
+  const [searchText, setSearchText] = useState('');
 
-  const filterRestaurant = () => {
+  const findRes = (e) => {
+    const filteredList = listOfRestaurants.filter(({ info }) => {
+      return info.name.toLowerCase().includes(searchText.toLowerCase());
+    });
+    setFilteredRestaurants(filteredList);
+    setFilter((prev) => !prev);
+  };
+
+  const filterRestaurant = (condition) => {
     const filteredList = listOfRestaurants.filter(
       ({ info }) => info.avgRating > 4.4
     );
@@ -47,7 +56,15 @@ export const Body = () => {
     <div className="body">
       <div className="filter">
         <div className="search">
-          <input type="text" placeholder="Search by name or cusines..." />
+          <input
+            type="text"
+            placeholder="Search by name..."
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          />
+          <button className="filter-btn" onClick={() => findRes()}>
+            Search
+          </button>
         </div>
         <button className="filter-btn" onClick={() => filterRestaurant()}>
           {filter ? 'Show All' : '*Show Top Rated*'}
