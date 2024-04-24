@@ -2,6 +2,8 @@ import { RestaurantCard } from './RestaurantCard';
 import { useState, useEffect } from 'react';
 import { Shimmer } from './Shimmer';
 import { SWIGGY_API_URL } from '../utils/constants';
+import { RESTAURANTS_MOCK_DATA } from '../utils/mockData';
+import ImagesPath from '../utils/imagesPath';
 
 export const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -27,26 +29,34 @@ export const Body = () => {
   };
 
   const fetchData = async () => {
-    const data = await fetch(SWIGGY_API_URL);
-    const json = await data.json();
-    const {
-      data: {
-        cards: [
-          ,
-          {
-            card: {
-              card: {
-                gridElements: {
-                  infoWithStyle: { restaurants },
-                },
-              },
-            },
-          },
-        ],
-      },
-    } = json;
-    setListOfRestaurants(restaurants);
-    setFilteredRestaurants(restaurants);
+    // const data = await fetch(SWIGGY_API_URL);
+    // const json = await data.json();
+    // const {
+    //   data: {
+    //     cards: [
+    //       ,
+    //       {
+    //         card: {
+    //           card: {
+    //             gridElements: {
+    //               infoWithStyle: { restaurants },
+    //             },
+    //           },
+    //         },
+    //       },
+    //     ],
+    //   },
+    // } = json;
+
+    // Using mock data because of CORS
+
+    const restaurantsData = RESTAURANTS_MOCK_DATA.map((r, i) => ({
+      ...r,
+      info: { ...r.info, cloudinaryImageId: ImagesPath[i] },
+    }));
+
+    setListOfRestaurants(restaurantsData);
+    setFilteredRestaurants(restaurantsData);
   };
 
   useEffect(() => {

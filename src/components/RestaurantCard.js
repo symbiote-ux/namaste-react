@@ -1,4 +1,6 @@
 import { SWIGGY_IMG_URL } from '../utils/constants';
+import startLogo from '../../assests/images/star-logo.jpeg';
+
 export const RestaurantCard = ({ info }) => {
   const {
     name,
@@ -13,11 +15,7 @@ export const RestaurantCard = ({ info }) => {
   } = info;
   return (
     <div className="res-card">
-      <img
-        className="res-logo"
-        src={SWIGGY_IMG_URL + cloudinaryImageId}
-        alt="restaurant logo"
-      />
+      <img className="res-logo" src={cloudinaryImageId} alt="restaurant logo" />
       <div className="res-card-details">
         <h3 className="res-heading">
           {name}
@@ -34,7 +32,7 @@ export const RestaurantCard = ({ info }) => {
             <div className="rating">
               <img
                 className="star-rating-logo"
-                src="https://www.vhv.rs/dpng/d/502-5020339_circle-with-star-green-hd-png-download.png"
+                src={startLogo}
                 alt="star rating logo"
               />
               <p>{avgRating}</p>
