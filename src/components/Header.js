@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { LOGO_URL } from '../utils/constants';
 import { IoMdLogIn, IoMdLogOut } from 'react-icons/io';
+import Logo from '../../assests/images/main-logo'
 
 export const Header = () => {
   const [toggle, setToggle] = useState(false);
